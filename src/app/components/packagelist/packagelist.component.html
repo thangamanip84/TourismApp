@@ -1,0 +1,96 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by Branch Name"
+          [(ngModel)]="branchName"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchbyName()">
+          
+            Search by Name
+          </button>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by Id"
+          [(ngModel)]="branchId"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchbyId()">
+          
+            Search by BranchId
+          </button>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by Places"
+          [(ngModel)]="places"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchbyPlace()">
+          
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Tourism Package List</h4>
+      <div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">BranchName</th>
+              <th scope="col">Places</th>
+              <th scope="col">Tariff</th>
+              <th scope="col">Website</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <th scope="row">{{ companyProfile.BranchId }}</th> -->
+            <tr  
+              *ngFor="let companyProfile of companyProfiles let i = index">
+              
+              <td [class.active]="i == currentIndex"
+              (click)="setActivePackage(companyProfile, i)">
+              {{ companyProfile.BranchName }}</td>
+              <td>{{ companyProfile.Places }}</td>
+              <td>{{ companyProfile.Tariff }}</td>
+              <td>{{ companyProfile.Website }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- <ul class="list-group">
+        <li class="list-group-item"
+
+          *ngFor="let companyProfile of companyProfiles; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveTutorial(companyProfile, i)"
+        >
+        {{ companyProfile.BranchName }}
+        
+        </li>
+      </ul> -->
+
+    </div>
+    <div class="col-md-6">
+      <app-packagedetails
+        [viewMode]="true"
+        [currentCompanyProfile]="currentCompanyProfile"></app-packagedetails>
+    </div>
+</div>

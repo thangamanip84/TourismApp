@@ -1,0 +1,125 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentCompanyProfile.BranchId">
+      <h4>Tourism Package Detail</h4>
+      <div>
+        <label><strong>Branch Name:</strong></label> {{ currentCompanyProfile.BranchName }}
+      </div>
+      <div>
+        <label><strong>Places:</strong></label>
+        {{ currentCompanyProfile.Places }}
+      </div>
+      <div>
+        <label><strong>Tariff: </strong></label>
+        {{ currentCompanyProfile.Tariff }}
+      </div>
+      <div>
+        <label><strong>Website: </strong></label>
+        {{ currentCompanyProfile.Website }}
+      </div>
+      <div>
+        <label><strong>Contact: </strong></label>
+        {{ currentCompanyProfile.Contact }}
+      </div>
+      <div>
+        <label><strong>Email : </strong></label>
+        {{ currentCompanyProfile.Email }}
+      </div>
+  
+      <a
+        class="badge badge-warning"
+        routerLink="/packages/{{ currentCompanyProfile.BranchId }}"
+      >
+        Edit
+      </a>
+    </div>
+  
+    <div *ngIf="!currentCompanyProfile">
+      <br />
+      <p>Please click on a Branch...</p>
+    </div>
+  </div>
+  
+  <ng-template #editable>
+    <div *ngIf="currentCompanyProfile.BranchId" class="edit-form">
+      <h4>Tutorial</h4>
+      <form>
+        <div class="form-group">
+            <label for="branchName">Branch Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              required
+              readonly
+              [(ngModel)]="currentCompanyProfile.BranchName"
+              name="Branch Name"
+            />
+         </div>
+         <div class="form-group">
+            <label for="places">Places</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              required
+              readonly
+              [(ngModel)]="currentCompanyProfile.Places"
+              name="Branch Name"
+            />
+         </div>
+         <div class="form-group">
+            <label for="tariff">Tariff</label>
+            <input
+              class="form-control"
+              id="tariff"
+              required="Please enter Tariff details"
+              [(ngModel)]="currentCompanyProfile.Tariff"
+              name="tariff"
+            />
+         </div>
+        <div class="form-group">
+            <label for="website">Website</label>
+            <input
+              class="form-control"
+              id="website"
+              readonly
+              [(ngModel)]="currentCompanyProfile.Website"
+              name="website"
+            />
+         </div>
+         <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              class="form-control"
+              id="email"
+              readonly
+              [(ngModel)]="currentCompanyProfile.Email"
+              name="email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="contact">Contact</label>
+            <input
+              class="form-control"
+              id="contact"
+              readonly
+              [(ngModel)]="currentCompanyProfile.Contact"
+              name="contact"
+            />
+          </div>
+      </form>
+  
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updatePackage()">
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentCompanyProfile.BranchId">
+      <br />
+      <p>Cannot access this package...</p>
+    </div>
+  </ng-template>

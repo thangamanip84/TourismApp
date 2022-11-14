@@ -1,0 +1,77 @@
+
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+        <div class="form-group">
+            <label for="branchName">Branch Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              required
+              [(ngModel)]="companyProfile.branchName"
+              name="Branch Name"
+            />
+         </div>
+         <div class="form-group">
+            <label for="places">Places</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              required
+              [(ngModel)]="companyProfile.place"
+              name="place"
+            />
+         </div>
+         <div class="form-group">
+            <label for="tariff">Tariff</label>
+            <input
+              class="form-control"
+              id="tariff"
+              required
+              [(ngModel)]="companyProfile.tariff"
+              name="tariff"
+            />
+         </div>
+        <div class="form-group">
+            <label for="website">Website</label>
+            <input
+              class="form-control"
+              id="website"
+              required
+              [(ngModel)]="companyProfile.website"
+              name="website"
+            />
+         </div>
+         <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              class="form-control"
+              id="email"
+              required
+              [(ngModel)]="companyProfile.email"
+              name="email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="contact">Contact</label>
+            <input
+              class="form-control"
+              id="contact"
+              required
+              [(ngModel)]="companyProfile.contact"
+              name="contact"
+            />
+          </div>
+        
+
+      <button (click)="savePackage()" class="btn btn-success">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Company package  was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newPackage()">Add</button>
+    </div>
+  </div>
+</div>
